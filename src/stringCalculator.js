@@ -10,6 +10,12 @@ function add(numbers) {
 
   numbers = numbers.replace(/\n/g, delimiter);
   const nums = numbers.split(delimiter).map(Number);
+
+  const negativeNumbers = nums.filter(n => n < 0);
+  if (negativeNumbers.length > 0) {
+    throw new Error(`negative numbers not allowed: ${negativeNumbers.join(', ')}`);
+  }
+
   return nums.reduce((a, b) => a + b, 0);
 }
 
